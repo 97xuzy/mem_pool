@@ -36,6 +36,7 @@ int test_9();
 // add_block_to_pool
 int test_10();
 
+int test_11();
 
 int main()
 {
@@ -49,6 +50,7 @@ int main()
     test_8();
     test_9();
     test_10();
+    test_11();
     return 0;
 }
 
@@ -536,6 +538,64 @@ int test_10()
     assert(mp->array[10] == tmp);
 
     free_whole_pool(mp);
+
+
+    destroy_pool(mp);
+
+    return 0;
+
+CleanUp:
+
+    free(tmp);
+    free_whole_pool(mp);
+    destroy_pool(mp);
+    return 1;
+}
+
+
+int test_11()
+{
+    const size_t UNIT_SIZE = 512;
+    mem_pool *mp = create_mem_pool();
+
+    if(mp == NULL)
+        goto CleanUp;
+
+    for(size_t i = 0; i < 10; i++)
+    {
+        char *str1 = pool_malloc(UNIT_SIZE * sizeof(*str1), mp);
+        if(str1 == NULL)
+            goto CleanUp;
+    }
+
+    char *block = malloc(10 * UNIT_SIZE);
+    if(block == NULL)
+        goto CleanUp;
+
+    add_block_to_pool(block, mp);
+    
+
+    assert(mp->num == 11);
+    assert(mp->array[10] == block);
+
+    char *tmp = realloc(block, 20 * UNIT_SIZE);
+    if(tmp == NULL)
+    {
+        goto CleanUp;
+    }
+    update_block_in_pool(block, tmp, mp);
+    block = tmp;
+
+    for(size_t i = 0; i < 20 * UNIT_SIZE; i++)
+    {
+        char c = 'a' + i % 26;
+
+        // Write
+        tmp[i] = c;
+
+        // Read
+        c = tmp[i];
+    }
 
 
     destroy_pool(mp);

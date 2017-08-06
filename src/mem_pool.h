@@ -27,7 +27,17 @@ void *pool_malloc(size_t size, mem_pool *pool);
 void *pool_calloc(size_t nmemb, size_t size, mem_pool *pool);
 void *pool_realloc(void *ptr, size_t size, mem_pool *pool);
 
+
+/**
+ * Add block that is not allocated by the pool to this pool
+ */
 int add_block_to_pool(void *block, mem_pool *pool);
+
+/**
+ * In case the block in the pool have to be updated outside the pool
+ * e.g. realloc outside the pool
+ */
+int update_block_in_pool(void *block, void *new_block, mem_pool *pool);
 
 int free_one_in_pool(void *mem_space, mem_pool *pool);
 #define pool_free free_one_in_pool

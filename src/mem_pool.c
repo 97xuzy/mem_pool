@@ -222,6 +222,34 @@ int add_block_to_pool(void *block, mem_pool *pool)
 }
 
 
+int update_block_in_pool(void *block, void *new_block, mem_pool *pool)
+{
+    assert(block != NULL);
+    assert(pool != NULL);
+    assert(pool->num <= pool->array_size);
+    assert(pool->array != NULL);
+
+    int find = 0;
+    size_t index = 0;
+    for(; index < pool->num; index++)
+    {
+        if(find == 0 && pool->array[index] == block)
+        {
+            find = 1;
+            break;
+        }
+    }
+
+    // The memory MUST be in the pool
+    assert(find == 1);
+
+    // Update
+    pool->array[index] = new_block;
+
+    return 0;
+}
+
+
 int free_one_in_pool(void *mem_space, mem_pool *pool)
 {
     assert(pool != NULL);
