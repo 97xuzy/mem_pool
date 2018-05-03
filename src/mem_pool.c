@@ -250,7 +250,7 @@ int update_block_in_pool(void *block, void *new_block, mem_pool *pool)
 }
 
 
-int free_one_in_pool(void *mem_space, mem_pool *pool)
+int pool_free(void *mem_space, mem_pool *pool)
 {
     assert(pool != NULL);
     assert(pool->num <= pool->array_size);

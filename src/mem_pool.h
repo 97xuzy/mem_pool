@@ -39,7 +39,7 @@ int add_block_to_pool(void *block, mem_pool *pool);
  */
 int update_block_in_pool(void *block, void *new_block, mem_pool *pool);
 
-int free_one_in_pool(void *mem_space, mem_pool *pool);
+int pool_free(void *mem_space, mem_pool *pool);
 #define pool_free free_one_in_pool
 int free_whole_pool(mem_pool *pool);
 

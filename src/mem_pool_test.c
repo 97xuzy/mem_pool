@@ -114,7 +114,7 @@ int test_2()
         {
             size_t prev_num = mp->num;
 
-            free_one_in_pool(str1, mp);
+            pool_free(str1, mp);
 
             assert(prev_num - 1 == mp->num);
         }
