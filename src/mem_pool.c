@@ -6,9 +6,9 @@
 #include "mem_pool.h"
 
 
-mem_pool* create_mem_pool()
+mem_pool_t* create_mem_pool()
 {
-    mem_pool *mp = malloc(sizeof(*mp));
+    mem_pool_t *mp = malloc(sizeof(*mp));
     if(mp == NULL)
     {
 #ifdef MEM_POOL_ERROR_PRINT
@@ -33,9 +33,9 @@ mem_pool* create_mem_pool()
 }
 
 
-mem_pool* create_mem_pool_w_size(size_t inital_pool_size)
+mem_pool_t* create_mem_pool_w_size(size_t inital_pool_size)
 {
-    mem_pool *mp = malloc(sizeof(*mp));
+    mem_pool_t *mp = malloc(sizeof(*mp));
     if(mp == NULL)
     {
 #ifdef MEM_POOL_ERROR_PRINT
@@ -60,7 +60,7 @@ mem_pool* create_mem_pool_w_size(size_t inital_pool_size)
 }
 
 
-void *pool_malloc(size_t size, mem_pool *pool)
+void *pool_malloc(size_t size, mem_pool_t *pool)
 {
     assert(pool != NULL);
     assert(pool->num <= pool->array_size);
@@ -98,7 +98,7 @@ void *pool_malloc(size_t size, mem_pool *pool)
 }
 
 
-void *pool_calloc(size_t nmemb, size_t size, mem_pool *pool)
+void *pool_calloc(size_t nmemb, size_t size, mem_pool_t *pool)
 {
     assert(pool != NULL);
     assert(pool->num <= pool->array_size);
@@ -136,7 +136,7 @@ void *pool_calloc(size_t nmemb, size_t size, mem_pool *pool)
 }
 
 
-void *pool_realloc(void *mem_space, size_t size, mem_pool *pool)
+void *pool_realloc(void *mem_space, size_t size, mem_pool_t *pool)
 {
     assert(pool != NULL);
     assert(pool->num <= pool->array_size);
@@ -180,7 +180,7 @@ void *pool_realloc(void *mem_space, size_t size, mem_pool *pool)
 }
 
 
-int add_block_to_pool(void *block, mem_pool *pool)
+int add_block_to_pool(void *block, mem_pool_t *pool)
 {
     assert(block != NULL);
     assert(pool != NULL);
@@ -222,7 +222,7 @@ int add_block_to_pool(void *block, mem_pool *pool)
 }
 
 
-int update_block_in_pool(void *block, void *new_block, mem_pool *pool)
+int update_block_in_pool(void *block, void *new_block, mem_pool_t *pool)
 {
     assert(block != NULL);
     assert(pool != NULL);
@@ -250,7 +250,7 @@ int update_block_in_pool(void *block, void *new_block, mem_pool *pool)
 }
 
 
-int pool_free(void *mem_space, mem_pool *pool)
+int pool_free(void *mem_space, mem_pool_t *pool)
 {
     assert(pool != NULL);
     assert(pool->num <= pool->array_size);
@@ -281,7 +281,7 @@ int pool_free(void *mem_space, mem_pool *pool)
 }
 
 
-int free_whole_pool(mem_pool *pool)
+int free_whole_pool(mem_pool_t *pool)
 {
     assert(pool != NULL);
     assert(pool->num <= pool->array_size);
@@ -297,7 +297,7 @@ int free_whole_pool(mem_pool *pool)
 }
 
 
-int merge_pool(mem_pool *dest, mem_pool *src)
+int merge_pool(mem_pool_t *dest, mem_pool_t *src)
 {
     assert(dest != NULL);
     assert(src != NULL);
@@ -343,7 +343,7 @@ int merge_pool(mem_pool *dest, mem_pool *src)
 }
 
 
-int move_one_between_pool(mem_pool *dest, mem_pool *src, void *mem_space)
+int move_one_between_pool(mem_pool_t *dest, mem_pool_t *src, void *mem_space)
 {
     assert(dest != NULL);
     assert(src != NULL);
@@ -393,7 +393,7 @@ int move_one_between_pool(mem_pool *dest, mem_pool *src, void *mem_space)
 }
 
 
-int destroy_pool(mem_pool *pool)
+int destroy_pool(mem_pool_t *pool)
 {
     free_whole_pool(pool);
 

@@ -58,7 +58,7 @@ int main()
 int test_1()
 {
     const size_t UNIT_SIZE = 10;
-    mem_pool *mp = create_mem_pool();
+    mem_pool_t *mp = create_mem_pool();
 
     if(mp == NULL)
         goto CleanUp;
@@ -99,7 +99,7 @@ CleanUp:
 int test_2()
 {
     const size_t UNIT_SIZE = 10;
-    mem_pool *mp = create_mem_pool();
+    mem_pool_t *mp = create_mem_pool();
 
     if(mp == NULL)
         goto CleanUp;
@@ -136,7 +136,7 @@ CleanUp:
 int test_3()
 {
     const size_t UNIT_SIZE = 10;
-    mem_pool *mp = create_mem_pool();
+    mem_pool_t *mp = create_mem_pool();
 
     if(mp == NULL)
         goto CleanUp;
@@ -170,7 +170,7 @@ CleanUp:
 int test_4()
 {
     const size_t UNIT_SIZE = 51200;
-    mem_pool *mp = create_mem_pool();
+    mem_pool_t *mp = create_mem_pool();
 
     if(mp == NULL)
         goto CleanUp;
@@ -216,7 +216,7 @@ CleanUp:
 int test_5()
 {
     const size_t UNIT_SIZE = 51200;
-    mem_pool *mp = create_mem_pool();
+    mem_pool_t *mp = create_mem_pool();
 
     if(mp == NULL)
         goto CleanUp;
@@ -276,7 +276,7 @@ int test_6()
 
     const size_t UNIT_SIZE = 51200;
     const unsigned int SUPER_LARGE = ~1024;
-    mem_pool *mp = create_mem_pool();
+    mem_pool_t *mp = create_mem_pool();
 
     if(mp == NULL)
         goto CleanUp;
@@ -313,8 +313,8 @@ CleanUp:
 int test_7()
 {
     const size_t UNIT_SIZE = 32;
-    mem_pool *mp1 = create_mem_pool();
-    mem_pool *mp2 = create_mem_pool();
+    mem_pool_t *mp1 = create_mem_pool();
+    mem_pool_t *mp2 = create_mem_pool();
 
     if(mp1 == NULL || mp2 == NULL)
         goto CleanUp;
@@ -385,8 +385,8 @@ CleanUp:
 int test_8()
 {
     const size_t UNIT_SIZE = 32;
-    mem_pool *mp1 = create_mem_pool();
-    mem_pool *mp2 = create_mem_pool();
+    mem_pool_t *mp1 = create_mem_pool();
+    mem_pool_t *mp2 = create_mem_pool();
 
     if(mp1 == NULL || mp2 == NULL)
         goto CleanUp;
@@ -435,8 +435,8 @@ CleanUp:
 int test_9()
 {
     const size_t UNIT_SIZE = 51200;
-    mem_pool *mp1 = create_mem_pool();
-    mem_pool *mp2 = create_mem_pool();
+    mem_pool_t *mp1 = create_mem_pool();
+    mem_pool_t *mp2 = create_mem_pool();
 
     if(mp1 == NULL || mp2 == NULL)
         goto CleanUp;
@@ -516,7 +516,7 @@ CleanUp:
 int test_10()
 {
     const size_t UNIT_SIZE = 512;
-    mem_pool *mp = create_mem_pool();
+    mem_pool_t *mp = create_mem_pool();
 
     if(mp == NULL)
         goto CleanUp;
@@ -556,7 +556,7 @@ CleanUp:
 int test_11()
 {
     const size_t UNIT_SIZE = 512;
-    mem_pool *mp = create_mem_pool();
+    mem_pool_t *mp = create_mem_pool();
 
     if(mp == NULL)
         goto CleanUp;
